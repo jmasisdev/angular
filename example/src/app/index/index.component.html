@@ -1,0 +1,52 @@
+<button mat-raised-button color="primary" (click)="agregarFormulario()">Agregar formulario</button>
+<br>
+<br>
+<form [formGroup]="forms[0]">
+  <mat-form-field appearance="outline">
+    <mat-label>Nombre</mat-label>
+    <input matInput placeholder="Placeholder" prefix="+7" mask="(000) 000 00 00" formControlName="nombre">
+  </mat-form-field>
+<br>
+  <mat-form-field appearance="outline">
+    <mat-label>Porcentaje</mat-label>
+    <input type="number" matInput placeholder="Placeholder" formControlName="porcentaje">
+  </mat-form-field>
+  <br>
+  <br>
+  <mat-form-field appearance="outline">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="fecha">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</form>
+<br>
+<br>
+<div *ngFor="let form of forms.slice(1); let i = index">
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="Placeholder" prefix="+7" mask="(000) 000 00 00" formControlName="nombre">
+    </mat-form-field>
+  <br>
+    <mat-form-field appearance="outline">
+      <mat-label>Porcentaje</mat-label>
+      <input type="number" matInput placeholder="Placeholder" formControlName="porcentaje">
+    </mat-form-field>
+<br>
+<br>
+<mat-form-field appearance="outline">
+  <mat-label>Choose a date</mat-label>
+  <input matInput [matDatepicker]="picker" formControlName="fecha">
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+  </form>
+</div>
+
+<button mat-raised-button color="warn" (click)="onSubmit()">Enviar formulario</button>
+<br>
+<br>
+<button mat-button (click)="openDialog()">PDF</button>
