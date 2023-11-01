@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { DialogContentExampleComponent } from '../dialog-content-example/dialog-content-example.component';
+import { DialogService } from '../dialog.service';
 
 @Component({
   selector: 'app-index',
@@ -13,7 +11,7 @@ import { DialogContentExampleComponent } from '../dialog-content-example/dialog-
 export class IndexComponent {
   forms: FormGroup[] = [];
 
-  constructor(private fb: FormBuilder, public dialog: MatDialog) {
+  constructor(private fb: FormBuilder, private dialogService: DialogService) {
     this.agregarFormulario()
   }
 
@@ -44,13 +42,9 @@ export class IndexComponent {
     }
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(DialogContentExampleComponent, {
-      width: '80%',
-      height: '80%'
-    });
-    const base64Data = 'JVBERi0xLjQKJf';
-    dialogRef.componentInstance['base64Data'] = base64Data
+  openPdfDialog() {
+    const pdfData = '';
+    this.dialogService.openPdfDialog(pdfData);
   }
 
   onSubmit() {
